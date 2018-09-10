@@ -2,7 +2,7 @@ import uuid
 
 from flask import Flask, jsonify, request
 
-from .block_chain import BlockChain
+from demo.block_chain import BlockChain
 
 # Instantiate our Node
 app = Flask(__name__)
@@ -103,8 +103,13 @@ def consensus():
     else:
         response['message'] = 'Our chain is authoritative'
     return jsonify(response), 200
-        
-        
+    
+    
+@app.route('/')
+def helloworld():
+    return 'hello, world!'
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
 
